@@ -74,8 +74,7 @@ services:
       - "./volumes/certs:/certs"
 
   parse-cloud-code:
-    #build: cloud/.
-    image: yongjhih/parse-cloud-code
+    build: cloud/.
     volumes:
       - /parse/cloud
     command: "ls /parse/cloud"
