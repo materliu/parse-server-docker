@@ -95,7 +95,7 @@ services:
   mongo:
     image: mongo:3.0.8 # ref. https://github.com/ParsePlatform/parse-server/issues/1913
     ports:
-      - "27017:27017"
+      - "27018:27017"
     depends_on:
       - mongo-data  
     volumes_from:
