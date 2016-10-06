@@ -12,3 +12,5 @@ link: https://github.com/ParsePlatform/Parse-Server
 JS 如何调用 parse后端服务， 详见项目下代码： sample-js
 
 SDK 的学习资料见： https://parseplatform.github.io/#sdks
+
+API 文档： https://parseplatform.github.io/Parse-SDK-JS/api/classes/Parse.Config.html
