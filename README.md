@@ -10,3 +10,5 @@ link: https://github.com/ParsePlatform/Parse-Server
 我们线上服务的 SERVER_URL是 parse.idingfu.cn 
 
 JS 如何调用 parse后端服务， 详见项目下代码： sample-js
+
+SDK 的学习资料见： https://parseplatform.github.io/#sdks
