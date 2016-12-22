@@ -8,8 +8,8 @@ services:
     environment:
       PORT: 1337
       DATABASE_URI: $DATABASE_URI
-      APP_ID: dingfu_x23aBdc23
-      MASTER_KEY: dingfunumberone_x23aBdc23
+      APP_ID: dingfu_*****
+      MASTER_KEY: dingfu*****
       PARSE_MOUNT: $PARSE_MOUNT # /parse
       DATABASE_URI: "mongodb://mongo:27017/"
       COLLECTION_PREFIX: $COLLECTION_PREFIX
@@ -79,36 +79,15 @@ services:
       - /parse/cloud
     command: "ls /parse/cloud"
 
-  git:
-    image: yongjhih/parse-server:git
-    ports:
-      - "2022:22"
-    environment:
-      PORT: 22
-      #WORKTREE: $GIT_WORKTREE
-      #REPO_PATH: $GIT_REPO_PATH
-    depends_on:
-      - parse-server
-    volumes_from:
-      - parse-server
-
   mongo:
-    image: mongo:3.0.8 # ref. https://github.com/ParsePlatform/parse-server/issues/1913
+    image: hub.c.163.com/library/mongo:latest # ref. https://github.com/ParsePlatform/parse-server/issues/1913
     ports:
       - "27018:27017"
-    depends_on:
-      - mongo-data  
-    volumes_from:
-      - mongo-data
+    volumes:
+      - .data/mongo:/data/db
   #  command: "--smallfiles --logpath=/dev/null --setParameter failIndexKeyTooLong=false --rest --auth"
     command: "--smallfiles --logpath=/dev/null --setParameter failIndexKeyTooLong=false"
   # ref. http://www.diogogmt.com/running-mongodb-with-docker-and-compose/
-
-  mongo-data:
-    image: mongo
-    volumes:
-      - /data/db
-    command: "--break-mongo"
 
   parse-dashboard:
     #image: yongjhih/parse-dashboard:1.0.10
@@ -118,20 +97,20 @@ services:
     depends_on:
       - parse-server
     environment:
-      APP_ID: dingfu_x23aBdc23
-      MASTER_KEY: dingfunumberone_x23aBdc23
+      APP_ID: dingfu_*****
+      MASTER_KEY: dingfu*****
       APP_NAME: dingfu-parse
       ALLOW_INSECURE_HTTP: 1
       USER1: dingfu
-      USER1_PASSWORD: dingfunumberone
+      USER1_PASSWORD: dingfu*****
       PARSE_DASHBOARD_ALLOW_INSECURE_HTTP: 1
-      SERVER_URL: http://10.211.55.4:1337/parse
-      PARSE_DASHBOARD_SERVER_URL: http://10.211.55.4:1337/parse
-      PARSE_DASHBOARD_MASTER_KEY: dingfunumberone_x23aBdc23
-      PARSE_DASHBOARD_APP_ID: dingfu_x23aBdc23
+      SERVER_URL: http://*****:1337/parse
+      PARSE_DASHBOARD_SERVER_URL: http://*****:1337/parse
+      PARSE_DASHBOARD_MASTER_KEY: dingfu*****
+      PARSE_DASHBOARD_APP_ID: dingfu*****
       PARSE_DASHBOARD_APP_NAME: dingfu-parse
-      PARSE_DASHBOARD_USER_ID: dingfu
-      PARSE_DASHBOARD_USER_PASSWORD: dingfunumberone
+      PARSE_DASHBOARD_USER_ID: dingfu*****
+      PARSE_DASHBOARD_USER_PASSWORD: dingfu*****
       PARSE_DASHBOARD_CONFIG: $PARSE_DASHBOARD_CONFIG
       MOUNT_PATH: $PARSE_DASHBOARD_MOUNT_PATH
       TRUST_PROXY: $PARSE_DASHBOARD_TRUST_PROXY
